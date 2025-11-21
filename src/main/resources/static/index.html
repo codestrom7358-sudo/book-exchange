@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookSwap Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:linear-gradient(135deg,#b9d8ff,#e8c9ff);
+        }
+
+        .login-container{
+            width:360px;
+            padding:40px 35px;
+            border-radius:22px;
+            background:rgba(255,255,255,0.20);
+            backdrop-filter:blur(12px);
+            box-shadow:0 8px 28px rgba(0,0,0,0.15);
+            animation:fadeIn 0.9s ease;
+        }
+
+        @keyframes fadeIn{
+            0%{opacity:0; transform:translateY(25px);}
+            100%{opacity:1; transform:translateY(0);}
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:10px;
+            font-weight:600;
+            color:#222;
+        }
+
+        p.sub{
+            text-align:center;
+            color:#444;
+            font-size:0.9rem;
+            margin-bottom:25px;
+        }
+
+        .input-field{
+            margin-bottom:18px;
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            font-size:0.85rem;
+            margin-bottom:6px;
+            color:#333;
+        }
+
+        input{
+            padding:12px 14px;
+            border:none;
+            border-radius:12px;
+            outline:none;
+            font-size:0.9rem;
+            background:rgba(255,255,255,0.75);
+            box-shadow:inset 0 0 8px rgba(0,0,0,0.08);
+            transition:0.2s;
+        }
+
+        input:focus{
+            box-shadow:0 0 0 2px #7da8ff;
+        }
+
+        .login-btn{
+            width:100%;
+            padding:12px;
+            margin-top:5px;
+            border:none;
+            border-radius:14px;
+            font-size:1rem;
+            font-weight:600;
+            background:linear-gradient(135deg,#4a7aff,#844aff);
+            color:white;
+            cursor:pointer;
+            transition:0.25s;
+        }
+
+        .login-btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .extra{
+            text-align:center;
+            margin-top:18px;
+            font-size:0.85rem;
+            color:#333;
+        }
+
+        .extra a{
+            color:#4a4aff;
+            text-decoration:none;
+            font-weight:500;
+        }
+
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Welcome Back</h2>
+    <p class="sub">Login to continue BookSwap</p>
+
+    <!-- Redirects to dashboard.html -->
+    <form action="dashboard.html" method="get">
+        <div class="input-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Enter your phone number" required>
+        </div>
+
+        <div class="input-field">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" required>
+        </div>
+
+        <button class="login-btn" type="submit">Login</button>
+    </form>
+
+    <div class="extra">
+        Don't have an account? <a href="#">Sign Up</a>
+    </div>
+</div>
+
+</body>
+</html>

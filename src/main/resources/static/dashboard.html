@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Exchange — Choose an option</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #c3e4ff, #e6d1ff);
+            overflow: hidden;
+        }
+
+        .glass-card {
+            padding: 40px 50px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            text-align: center;
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #1d1d1d;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            color: #3b3b3b;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .options {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .option {
+            width: 230px;
+            text-decoration: none;
+            background: white;
+            padding: 20px 15px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .option:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .icon-box {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dbe8ff, #fce4ff);
+        }
+
+        .label {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1.05rem;
+        }
+
+        .sub {
+            font-size: 0.85rem;
+            color: #4d4d4d;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="glass-card">
+    <h1>Welcome to BookSwap</h1>
+    <p class="subtitle">Choose an option below</p>
+
+    <div class="options">
+        <a class="option" href="#">
+            <div class="icon-box">📚</div>
+            <div class="label">Browse Books</div>
+            <div class="sub">Find books to borrow or request from users</div>
+        </a>
+
+        <a class="option" href="#">
+            <div class="icon-box">📦</div>
+            <div class="label">Offer Books</div>
+            <div class="sub">List books you want to swap, donate or sell</div>
+        </a>
+    </div>
+</div>
+</body>
+</html>
