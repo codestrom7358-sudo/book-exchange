@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Book Type</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin:0;
+            font-family:'Poppins',sans-serif;
+            background:linear-gradient(135deg,#b9d8ff,#e8c9ff);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.25);
+            backdrop-filter:blur(10px);
+            padding:40px;
+            border-radius:25px;
+            text-align:center;
+            box-shadow:0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:25px;
+        }
+
+        .types{
+            display:flex;
+            gap:20px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        .btn{
+            padding:15px 25px;
+            border-radius:15px;
+            border:none;
+            background:linear-gradient(135deg,#4a7aff,#844aff);
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            min-width:180px;
+        }
+
+        .btn:hover{
+            transform:translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Select Book Category</h2>
+
+    <div class="types">
+        <button class="btn" onclick="goToForm('Engineering')">Engineering</button>
+        <button class="btn" onclick="goToForm('Arts & Science')">Arts & Science</button>
+        <button class="btn" onclick="goToForm('Medical')">Medical</button>
+    </div>
+</div>
+
+<script>
+    function goToForm(type){
+        window.location.href = "give-book.html?category=" + encodeURIComponent(type);
+    }
+</script>
+
+</body>
+</html>

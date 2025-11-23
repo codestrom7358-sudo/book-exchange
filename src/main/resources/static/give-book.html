@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offer Books - Book Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #5f6cff, #6a5cff);
+            min-height: 100vh;
+            padding: 20px;
+
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .books-container {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .book-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .book-box h3 {
+            margin-top: 0;
+            color: #4b50c7;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: #4b50c7;
+            color: #fff;
+        }
+
+        .submit-btn {
+            background: #2ecc71;
+            color: #fff;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📚 Offer Your Books</h2>
+
+<div class="books-container" id="booksContainer">
+
+    <div class="book-box">
+        <h3>Book 1</h3>
+
+        <label>Book Name</label>
+        <input type="text" placeholder="Enter book name">
+
+        <label>Semester</label>
+        <select>
+            <option>Semester 1</option>
+            <option>Semester 2</option>
+            <option>Semester 3</option>
+            <option>Semester 4</option>
+            <option>Semester 5</option>
+            <option>Semester 6</option>
+            <option>Semester 7</option>
+            <option>Semester 8</option>
+        </select>
+
+        <label>Book Condition</label>
+        <select>
+            <option>New</option>
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+        </select>
+
+        <label>Description</label>
+        <textarea rows="3" placeholder="Describe the book..."></textarea>
+
+        <label>Delivery Method</label>
+        <select>
+            <option>Hand to Hand</option>
+            <option>Indian Post</option>
+            <option>Courier</option>
+        </select>
+    </div>
+
+</div>
+
+<div class="books-container">
+    <div class="actions">
+        <button class="btn add-btn" onclick="addBookBox()">➕ Add Another Book</button>
+        <button class="btn submit-btn" onclick="submitAllBooks()">✅ Submit All Books</button>
+    </div>
+</div>
+
+<script>
+    let bookCount = 1;
+
+    function addBookBox() {
+        bookCount++;
+        const container = document.getElementById('booksContainer');
+
+        const box = document.createElement('div');
+        box.className = 'book-box';
+
+        box.innerHTML = `
+        <h3>Book ${bookCount}</h3>
+        <label>Book Name</label>
+        <input type="text" placeholder="Enter book name">
+
+        <label>Semester</label>
+        <select>
+            <option>Semester 1</option>
+            <option>Semester 2</option>
+            <option>Semester 3</option>
+            <option>Semester 4</option>
+            <option>Semester 5</option>
+            <option>Semester 6</option>
+            <option>Semester 7</option>
+            <option>Semester 8</option>
+        </select>
+
+        <label>Book Condition</label>
+        <select>
+            <option>New</option>
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+        </select>
+
+        <label>Description</label>
+        <textarea rows="3" placeholder="Describe the book..."></textarea>
+
+        <label>Delivery Method</label>
+        <select>
+            <option>Hand to Hand</option>
+            <option>Indian Post</option>
+            <option>Courier</option>
+        </select>
+    `;
+
+        container.appendChild(box);
+    }
+
+    function submitAllBooks() {
+        alert("✅ Books ready to be submitted! Backend can now be connected for storage.");
+    }
+</script>
+
+</body>
+</html>

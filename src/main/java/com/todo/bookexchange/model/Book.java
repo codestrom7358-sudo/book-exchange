@@ -10,7 +10,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String bookType;   // ENGINEERING, ARTS, MEDICAL
     private String bookName;
     private String semester;
     private String description;
