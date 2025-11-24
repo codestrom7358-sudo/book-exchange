@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            margin:0;
+            font-family: Poppins, Arial, sans-serif;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#c3e4ff,#e6d1ff);
+        }
+
+        .container{
+            text-align:center;
+        }
+
+        h2{
+            margin-bottom:40px;
+            font-size:28px;
+        }
+
+        .boxes{
+            display:flex;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .box{
+            background:#fff;
+            padding:40px 30px;
+            border-radius:20px;
+            width:220px;
+            cursor:pointer;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+            transition:0.4s;
+            font-size:18px;
+            font-weight:600;
+        }
+
+        .box:hover{
+            transform:scale(1.08) translateY(-10px);
+            background:#4b50c7;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📚 Select Book Category</h2>
+
+    <div class="boxes">
+        <div class="box" onclick="goTo('engineering')">Engineering</div>
+        <div class="box" onclick="goTo('arts')">Arts & Science</div>
+        <div class="box" onclick="goTo('medical')">Medical</div>
+    </div>
+</div>
+
+<script>
+    function goTo(category){
+        if(category === 'engineering'){
+            window.location.href = 'engineering-semesters.html';
+        } else {
+            alert('Coming soon...');
+        }
+    }
+</script>
+
+</body>
+</html>
