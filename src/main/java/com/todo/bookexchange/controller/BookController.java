@@ -25,6 +25,12 @@ public class BookController {
     public List<Book> getAvailableBooks(){
         return bookRepository.findByStatus("AVAILABLE");
     }
+    @GetMapping("/category/{category}")
+    public List<Book> getBooksByCategory(@PathVariable String category) {
+        return bookRepository.findByCategoryIgnoreCase(category);
+    }
+
+
 
     @PutMapping("/buy/{id}")
     public Book buyBook(@PathVariable Long id, @RequestParam String buyer){

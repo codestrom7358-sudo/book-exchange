@@ -17,6 +17,18 @@ public class Book {
 
     private String giverMobile;
     private String buyerMobile;
+    private String category;
+
+    @Column(name = "category")
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
 
     private String status;  // AVAILABLE, TAKEN
 }

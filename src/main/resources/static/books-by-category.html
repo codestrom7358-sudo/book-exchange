@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books By Category</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+            background: #f4f6ff;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .book {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h2 id="heading"></h2>
+<div id="booksContainer"></div>
+<div id="bookList"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const category = params.get("category");
+
+fetch("http://localhost:8080/api/book/category/" + category)
+.then(res => res.json())
+.then(data => {
+    let container = document.getElementById("bookList");
+    container.innerHTML = "";
+
+    data.forEach(book => {
+        container.innerHTML += `
+            <div>
+                <h3>${book.title}</h3>
+                <p>Author: ${book.author}</p>
+                <p>Category: ${book.category}</p>
+            </div>
+        `;
+    });
+});
+</script>
+
+
+</body>
+</html>
