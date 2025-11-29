@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BookSwap Login</title>
+    <title>BookSwap Registration</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -23,7 +23,7 @@
             background:linear-gradient(135deg,#b9d8ff,#e8c9ff);
         }
 
-        .login-container{
+        .register-container{
             width:360px;
             padding:40px 35px;
             border-radius:22px;
@@ -33,9 +33,23 @@
             animation:fadeIn 0.9s ease;
         }
 
+        @keyframes fadeIn{
+            0%{opacity:0; transform:translateY(25px);}
+            100%{opacity:1; transform:translateY(0);}
+        }
+
         h2{
             text-align:center;
             margin-bottom:10px;
+            font-weight:600;
+            color:#222;
+        }
+
+        .sub{
+            text-align:center;
+            margin-bottom:25px;
+            font-size:0.9rem;
+            color:#444;
         }
 
         .input-field{
@@ -44,41 +58,58 @@
             flex-direction:column;
         }
 
+        label{
+            margin-bottom:6px;
+            font-size:0.85rem;
+            color:#333;
+        }
+
         input{
             padding:12px 14px;
             border:none;
             border-radius:12px;
-            outline:none;
             background:rgba(255,255,255,0.75);
+            outline:none;
+            font-size:0.9rem;
         }
 
-        .login-btn{
+        .register-btn{
             width:100%;
             padding:12px;
             border:none;
             border-radius:14px;
             background:linear-gradient(135deg,#4a7aff,#844aff);
             color:white;
+            font-size:1rem;
             font-weight:600;
             cursor:pointer;
+            transition:0.25s;
+        }
+
+        .register-btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.25);
         }
 
         .extra{
             text-align:center;
             margin-top:18px;
+            font-size:0.85rem;
         }
 
         .extra a{
             color:#4a4aff;
             text-decoration:none;
+            font-weight:500;
         }
     </style>
 </head>
 
 <body>
 
-<div class="login-container">
-    <h2>BookSwap Login</h2>
+<div class="register-container">
+    <h2>Create Account</h2>
+    <p class="sub">Register to start swapping books</p>
 
     <div class="input-field">
         <label>Phone Number</label>
@@ -87,34 +118,36 @@
 
     <div class="input-field">
         <label>Password</label>
-        <input type="password" id="password" placeholder="Enter password">
+        <input type="password" id="password" placeholder="Create password">
     </div>
 
-    <button class="login-btn" onclick="login()">Login</button>
+    <button class="register-btn" onclick="register()">Register</button>
 
     <div class="extra">
-        New user? <a href="register.html">Create account</a>
+        Already have an account? <a href="index.html">Login</a>
     </div>
 </div>
 
+
 <script>
-function login(){
- fetch("/auth/login", {
-   method: "POST",
-   headers: {"Content-Type": "application/json"},
-   body: JSON.stringify({
-     phone: document.getElementById("phone").value,
-     password: document.getElementById("password").value
-   })
- })
- .then(res => res.text())
- .then(data => {
-   if(data === "Login successful"){
-     window.location.href = "dashboard.html";
-   } else {
-     alert(data);
-   }
- });
+function register(){
+    fetch("/auth/register", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            phone: document.getElementById("phone").value,
+            password: document.getElementById("password").value
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        if(data === "Registration successful"){
+            alert("Registration Successful!");
+            window.location.href = "index.html";  // Redirect to login
+        } else {
+            alert(data);
+        }
+    });
 }
 </script>
 
