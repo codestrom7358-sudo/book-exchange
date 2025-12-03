@@ -6,37 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "*")
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/book")
+@RequestMapping("/books")
 public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
 
+    // ADD BOOK
     @PostMapping("/add")
-    public Book addBook(@RequestBody Book book){
-        book.setStatus("AVAILABLE");
+    public Book addBook(@RequestBody Book book) {
+        book.setStatus("Available");
         return bookRepository.save(book);
     }
 
-    @GetMapping("/available")
-    public List<Book> getAvailableBooks(){
-        return bookRepository.findByStatus("AVAILABLE");
-    }
-    @GetMapping("/category/{category}")
-    public List<Book> getBooksByCategory(@PathVariable String category) {
-        return bookRepository.findByCategoryIgnoreCase(category);
-    }
-
-
-
-    @PutMapping("/buy/{id}")
-    public Book buyBook(@PathVariable Long id, @RequestParam String buyer){
-        Book b = bookRepository.findById(id).orElseThrow();
-        b.setBuyerMobile(buyer);
-        b.setStatus("TAKEN");
-        return bookRepository.save(b);
+    // GET ALL BOOKS
+    @GetMapping("/all")
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }

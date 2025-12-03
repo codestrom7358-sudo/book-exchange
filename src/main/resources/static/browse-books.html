@@ -1,73 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Browse Books</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <style>
-        body{
-            margin:0;
-            font-family: Poppins, Arial, sans-serif;
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#c3e4ff,#e6d1ff);
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f4f6ff;
         }
 
-        .container{
-            text-align:center;
+        h2 {
+            text-align: center;
         }
 
-        h2{
-            margin-bottom:40px;
-            font-size:28px;
+        .search-box {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .boxes{
-            display:flex;
-            gap:30px;
-            flex-wrap:wrap;
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
         }
 
-        .box{
-            background:#fff;
-            padding:40px 30px;
-            border-radius:20px;
-            width:220px;
-            cursor:pointer;
-            box-shadow:0 10px 25px rgba(0,0,0,0.15);
-            transition:0.4s;
-            font-size:18px;
-            font-weight:600;
+        .book {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
-        .box:hover{
-            transform:scale(1.08) translateY(-10px);
-            background:#4b50c7;
-            color:#fff;
+        .book-title {
+            font-size: 20px;
+            font-weight: bold;
         }
+
+        .category {
+            color: gray;
+            font-size: 14px;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>📚 Select Book Category</h2>
+<h2>Available Books</h2>
 
-    <div class="boxes">
-        <div class="box" onclick="goTo('engineering')">Engineering</div>
-        <div class="box" onclick="goTo('arts')">Arts & Science</div>
-        <div class="box" onclick="goTo('medical')">Medical</div>
-    </div>
+<div class="search-box">
+    <input type="text" id="search" placeholder="Search by book name or category..." onkeyup="searchBooks()">
 </div>
 
+<div id="book-list"></div>
+
 <script>
-    function goTo(category){
-        window.location.href = "books-by-category.html?category=" + category;
+    let allBooks = [];
+
+    fetch("http://localhost:8080/books/all")
+        .then(response => response.json())
+        .then(data => {
+            allBooks = data;
+            displayBooks(allBooks);
+        })
+        .catch(error => console.error("Error fetching books:", error));
+
+    function displayBooks(books) {
+        let container = document.getElementById("book-list");
+        container.innerHTML = "";
+
+        if (books.length === 0) {
+            container.innerHTML = "<p style='text-align:center;'>No books found.</p>";
+            return;
+        }
+
+        books.forEach(book => {
+            let box = `
+                <div class="book">
+                    <div class="book-title">${book.bookName}</div>
+                    <div class="category">Category: ${book.category || 'N/A'}</div>
+                    <p>${book.description}</p>
+                    <p><strong>Semester:</strong> ${book.semester}</p>
+                    <p><strong>Contact:</strong> ${book.giverMobile}</p>
+                </div>
+            `;
+            container.innerHTML += box;
+        });
+    }
+
+    function searchBooks() {
+        let text = document.getElementById("search").value.toLowerCase();
+
+        let filtered = allBooks.filter(book =>
+            book.bookName.toLowerCase().includes(text) ||
+            book.category.toLowerCase().includes(text)
+        );
+
+        displayBooks(filtered);
     }
 </script>
-
 
 </body>
 </html>
