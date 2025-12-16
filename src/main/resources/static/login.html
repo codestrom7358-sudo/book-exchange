@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login</title>
+</head>
+<body>
+
+<h2>Existing User Login</h2>
+
+<input type="text" id="phone" placeholder="Phone Number"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+function login(){
+ fetch("/auth/login", {
+   method: "POST",
+   headers: {"Content-Type": "application/json"},
+   body: JSON.stringify({
+     phone: document.getElementById("phone").value,
+     password: document.getElementById("password").value
+   })
+ })
+ .then(res => res.text())
+ .then(data => {
+     if(data === "Login successful"){
+         window.location.href = "/dashboard.html";
+     } else {
+         alert(data);
+     }
+ });
+}
+</script>
+
+</body>
+</html>
